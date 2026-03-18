@@ -6,6 +6,9 @@ class Author(models.Model):
     name = models.CharField(max_length=100)
     age = models.BigIntegerField()
 
+    def __str__(self):
+        return self.name
+
 
 class Book(models.Model):
     class CategoryChoice(models.TextChoices):
@@ -20,6 +23,9 @@ class Book(models.Model):
     description = models.TextField()
     category = models.CharField(choices=CategoryChoice, default=CategoryChoice.CLASSICAL)
     authors = models.ManyToManyField(Author, related_name="books")
+
+    def __str__(self):
+        return self.title
 
 
 class Rating(models.Model):
