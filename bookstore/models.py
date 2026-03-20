@@ -7,7 +7,7 @@ class Author(models.Model):
     age = models.BigIntegerField()
 
     def __str__(self):
-        return self.name
+        return f"{self.name}, age: {self.age}\n"
 
 
 class Book(models.Model):
@@ -29,5 +29,8 @@ class Book(models.Model):
 
 
 class Rating(models.Model):
-    book = models.ForeignKey(Book, on_delete=models.CASCADE)
+    book = models.ForeignKey(Book, on_delete=models.CASCADE, related_name="ratings")
     rating = models.PositiveSmallIntegerField(validators=[MinValueValidator(1), MaxValueValidator(5)])
+
+    def __str__(self):
+        return f"{self.book} was rated {self.rating}\n"
