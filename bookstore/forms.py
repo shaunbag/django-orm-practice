@@ -2,7 +2,7 @@ from django import forms
 from .models import Author, Book, Rating
 
 class AuthorForm(forms.ModelForm):
-    class Meta():
+    class Meta:
         model = Author
         fields = ["name", "age"]
         labels = {
@@ -12,7 +12,7 @@ class AuthorForm(forms.ModelForm):
 
 
 class BookForm(forms.ModelForm):
-    class Meta():
+    class Meta:
         model = Book
         fields = ["title", "description", "category", "authors"]
         labels = {
@@ -24,7 +24,7 @@ class BookForm(forms.ModelForm):
 
 
 class RatingsForm(forms.ModelForm):
-    class Meta():
+    class Meta:
         model = Rating
         fields = ["book", "rating"]
         labels = {

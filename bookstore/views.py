@@ -13,7 +13,8 @@ def add_author(request):
         if form.is_valid():
             form.save()
         return redirect('author')
-    
+    return None
+
 
 def book(request):
     template = "bookstore/form.html"
@@ -27,8 +28,9 @@ def add_book(request):
         if form.is_valid():
             form.save()
         return redirect('book')
-    
-    
+    return None
+
+
 def rating(request):
     template = "bookstore/form.html"
     form = RatingsForm()
@@ -41,3 +43,4 @@ def add_rating(request):
         if form.is_valid():
             form.save()
         return redirect('ratings')
+    return None
