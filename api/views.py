@@ -5,7 +5,8 @@ from rest_framework.response import Response
 from .serializers import BookSerializer, AuthorSerializer, RatingsSerializer
 from rest_framework.decorators import api_view, action
 from rest_framework import viewsets
-from rest_framework.reverse import reverse
+from rest_framework.reverse import reverse 
+from rest_framework import permissions
 
 @api_view(["GET"])
 def api_root(request):
@@ -21,6 +22,7 @@ def api_root(request):
 class BookViewSet(viewsets.ModelViewSet):
     queryset = Book.objects.all()
     serializer_class = BookSerializer
+    permission_classes = [permissions.IsAuthenticated]
 
     @action(detail=True, renderer_classes=[renderers.StaticHTMLRenderer])
     def books(self, request, *args, **kwargs):
@@ -34,6 +36,7 @@ class BookViewSet(viewsets.ModelViewSet):
 class AuthorViewSet(viewsets.ModelViewSet):
     queryset = Author.objects.all()
     serializer_class = AuthorSerializer
+    permission_classes = [permissions.IsAuthenticated]
 
     @action(detail=True, renderer_classes=[renderers.StaticHTMLRenderer])
     def authors(self, request, *args,**kwargs):
@@ -46,6 +49,7 @@ class AuthorViewSet(viewsets.ModelViewSet):
 class RatingsViewSet(viewsets.ModelViewSet):
     queryset = Rating.objects.all()
     serializer_class = RatingsSerializer
+    permission_classes = [permissions.IsAuthenticated]
 
     @action(detail=True, renderer_classes=[renderers.StaticHTMLRenderer])
     def ratings(self, request, *args, **kwargs):
