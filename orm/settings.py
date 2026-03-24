@@ -52,7 +52,8 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
-    'api.middleware.ip_blacklist.IpBlackListMiddlware'
+    'api.middleware.ip_blacklist.IpBlackListMiddlware',
+    'api.middleware.maintenence_mode.MaintenanceModeMiddleware'
 ]
 
 ROOT_URLCONF = 'orm.urls'
@@ -130,5 +131,7 @@ STATIC_URL = 'static/'
 
 
 BANNED_IPS = [
-    '192.68.5.1',
+   
 ]
+
+MAINTENENCE_MODE=True
