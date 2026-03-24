@@ -1,0 +1,31 @@
+{% load static %}
+<!DOCTYPE=html>
+<html>
+<head>
+    <title>Maintenence</title>
+    <style>
+        body, html {
+            margin: 0;
+        }
+        main{
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+        }
+    </style>
+</head>
+<body>
+    <main style="background-image: url('{% static 'images/background.png' %}');">
+        <h1>Site Currently Down For Maintenence</h1>
+        <div>
+            <p>This site is currently under Maintenence</p>
+        </div>
+    </main>
+</body>
+
+</html>
