@@ -1,4 +1,5 @@
 from django.shortcuts import render
+from api.filters import AuthorFilter, BookFilter, RatingFilter
 from bookstore.models import Book, Author, Rating
 from rest_framework import status, renderers
 from rest_framework.response import Response
@@ -23,6 +24,7 @@ class BookViewSet(viewsets.ModelViewSet):
     queryset = Book.objects.all()
     serializer_class = BookSerializer
     permission_classes = [permissions.IsAuthenticated]
+    filterset_class = BookFilter
 
     @action(detail=True, renderer_classes=[renderers.StaticHTMLRenderer])
     def books(self, request, *args, **kwargs):
@@ -37,6 +39,7 @@ class AuthorViewSet(viewsets.ModelViewSet):
     queryset = Author.objects.all()
     serializer_class = AuthorSerializer
     permission_classes = [permissions.IsAuthenticated]
+    filterset_class = AuthorFilter
 
     @action(detail=True, renderer_classes=[renderers.StaticHTMLRenderer])
     def authors(self, request, *args,**kwargs):
@@ -50,6 +53,7 @@ class RatingsViewSet(viewsets.ModelViewSet):
     queryset = Rating.objects.all()
     serializer_class = RatingsSerializer
     permission_classes = [permissions.IsAuthenticated]
+    filterset_class = RatingFilter
 
     @action(detail=True, renderer_classes=[renderers.StaticHTMLRenderer])
     def ratings(self, request, *args, **kwargs):

@@ -2,7 +2,10 @@ from bookstore.models import Author, Book, Rating
 from rest_framework import serializers
 
 
-class RatingsSerializer(serializers.ModelSerializer):
+class RatingsSerializer(serializers.HyperlinkedModelSerializer):
+    book = serializers.HyperlinkedRelatedField(
+        view_name="book-detail", format="html", read_only=True
+    )
     class Meta:
         model = Rating
         fields = ["rating", "book"]
@@ -16,7 +19,7 @@ class BookSerializer(serializers.HyperlinkedModelSerializer):
     
     class Meta:
         model = Book
-        fields = ["url","title", "description", "authors", "ratings"]
+        fields = ["url","title", "description", "category", "authors", "ratings"]
 
 
 class AuthorSerializer(serializers.HyperlinkedModelSerializer):

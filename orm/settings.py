@@ -41,7 +41,8 @@ INSTALLED_APPS = [
     'bookstore',
     'django_extensions',
     'rest_framework',
-    'api'
+    'api',
+    'django_filters'
 ]
 
 MIDDLEWARE = [
@@ -77,6 +78,10 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'orm.wsgi.application'
 
+
+REST_FRAMEWORK = {
+    'DEFAULT_FILTER_BACKENDS': ['django_filters.rest_framework.DjangoFilterBackend']
+}
 
 # Database
 # https://docs.djangoproject.com/en/6.0/ref/settings/#databases
@@ -134,4 +139,4 @@ BANNED_IPS = [
    
 ]
 
-MAINTENENCE_MODE=True
+MAINTENENCE_MODE=False
